@@ -512,7 +512,7 @@ void HC05_AdminUserInterface(void)
                 if(glbl_u8AdminMode == ADMIN_LOGGED_ON)
                 {
                     /*Admin wants to delete a user "Allowed"*/
-					UART_TxString("Please enter the user's ID that you wish to delete\n");
+			UART_TxString("Please enter the user's ID that you wish to delete\n");
                     glbl_u8CurrentScreen = HC05_DELETE_USER_SCREEN;
                 }
                 else if(glbl_u8UserMode == USER_LOGGED_ON)
@@ -600,30 +600,30 @@ void HC05_AdminUserInterface(void)
                 UART_TxString("2: LED 2 Off\n");
                 glbl_u8CurrentScreen = HC05_LEDS_CONTROL;
             }
-            //else if('3' == glbl_u8AdminUserChoice[0])
-            //{
-            //    /*User/Admin wants to control LED 3*/
-            //    glbl_u8LEDChoice = HC05_LED_3_CHOICE;
-            //    UART_TxString("1: LED 3 On\n");
-            //    UART_TxString("2: LED 3 Off\n");
-            //    glbl_u8CurrentScreen = HC05_LEDS_CONTROL;
-            //}
-            //else if('4' == glbl_u8AdminUserChoice[0])
-            //{
-            //    /*User/Admin wants to control LED 4*/
-            //    glbl_u8LEDChoice = HC05_LED_4_CHOICE;
-            //    UART_TxString("1: LED 4 On\n");
-            //    UART_TxString("2: LED 4 Off\n");
-            //    glbl_u8CurrentScreen = HC05_LEDS_CONTROL;
-            //}
-            //else if('5' == glbl_u8AdminUserChoice[0])
-            //{
-            //    /*User/Admin wants to control LED 5*/
-            //    glbl_u8LEDChoice = HC05_LED_5_CHOICE;
-            //    UART_TxString("1: LED 5 On\n");
-            //    UART_TxString("2: LED 5 Off\n");
-            //    glbl_u8CurrentScreen = HC05_LEDS_CONTROL;
-            //}
+            else if('3' == glbl_u8AdminUserChoice[0])
+            {
+                /*User/Admin wants to control LED 3*/
+                glbl_u8LEDChoice = HC05_LED_3_CHOICE;
+                UART_TxString("1: LED 3 On\n");
+                UART_TxString("2: LED 3 Off\n");
+                glbl_u8CurrentScreen = HC05_LEDS_CONTROL;
+            }
+            else if('4' == glbl_u8AdminUserChoice[0])
+            {
+                /*User/Admin wants to control LED 4*/
+                glbl_u8LEDChoice = HC05_LED_4_CHOICE;
+                UART_TxString("1: LED 4 On\n");
+                UART_TxString("2: LED 4 Off\n");
+                glbl_u8CurrentScreen = HC05_LEDS_CONTROL;
+            }
+            else if('5' == glbl_u8AdminUserChoice[0])
+            {
+                /*User/Admin wants to control LED 5*/
+                glbl_u8LEDChoice = HC05_LED_5_CHOICE;
+                UART_TxString("1: LED 5 On\n");
+                UART_TxString("2: LED 5 Off\n");
+                glbl_u8CurrentScreen = HC05_LEDS_CONTROL;
+            }
             else if('6' == glbl_u8AdminUserChoice[0])
             {
                 /*User/Admin wants to control Dimming LED*/
@@ -700,84 +700,84 @@ void HC05_AdminUserInterface(void)
                     UART_TxString("2: LED 2 Off\n");
 				}
             }
-            //else if(HC05_LED_3_CHOICE == glbl_u8LEDChoice)
-            //{
-            //    if('1' == glbl_u8AdminUserChoice[0])
-            //    {
-            //        /*Admin/User wants to turn on LED 3*/
-            //        LED_On(HC05_LED_3_PORT_ID, HC05_LED_3_PIN_ID);
-            //        UART_TxString("LED 3 Turned On Successfully\n");
-            //        HC05_AdminUserChoiceList();
-            //        glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
-            //    }
-            //    else if('2' == glbl_u8AdminUserChoice[0])
-            //    {
-            //        /*Admin/User wants to turn off LED 3*/
-            //        LED_Off(HC05_LED_3_PORT_ID, HC05_LED_3_PIN_ID);
-            //        UART_TxString("LED 3 Turned Off Successfully\n");
-            //        HC05_AdminUserChoiceList();
-            //        glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
-            //    }
-            //    else
-            //    {
-            //        /*Admin/User has entered wrong input*/
-            //        UART_TxString("Sorry, Wrong Input\n");
-            //        UART_TxString("1: LED 3 On\n");
-            //        UART_TxString("2: LED 3 Off\n");
-            //    }
-            //}
-            //else if(HC05_LED_4_CHOICE == glbl_u8LEDChoice)
-            //{
-            //    if('1' == glbl_u8AdminUserChoice[0])
-            //    {
-            //        /*Admin/User wants to turn on LED 4*/
-            //        LED_On(HC05_LED_4_PORT_ID, HC05_LED_4_PIN_ID);
-            //        UART_TxString("LED 4 Turned On Successfully\n");
-            //        HC05_AdminUserChoiceList();
-            //        glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
-            //    }
-            //    else if('2' == glbl_u8AdminUserChoice[0])
-            //    {
-            //        /*Admin/User wants to turn off LED 4*/
-            //        LED_Off(HC05_LED_4_PORT_ID, HC05_LED_4_PIN_ID);
-            //        UART_TxString("LED 4 Turned Off Successfully\n");
-            //        HC05_AdminUserChoiceList();
-            //        glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
-            //    }
-            //    else
-            //    {
-            //        /*Admin/User has entered wrong input*/
-            //        UART_TxString("Sorry, Wrong Input\n");
-            //        UART_TxString("1: LED 4 On\n");
-            //        UART_TxString("2: LED 4 Off\n");
-            //    }
-            //}
-            //else if(HC05_LED_5_CHOICE == glbl_u8LEDChoice)
-            //{
-            //    if('1' == glbl_u8AdminUserChoice[0])
-            //    {
-            //        /*Admin/User wants to turn on LED 5*/
-            //        LED_On(HC05_LED_5_PORT_ID, HC05_LED_5_PIN_ID);
-            //        UART_TxString("LED 5 Turned On Successfully\n");
-            //        HC05_AdminUserChoiceList();
-            //        glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
-            //    }
-            //    else if('2' == glbl_u8AdminUserChoice[0])
-            //    {
-            //        /*Admin/User wants to turn off LED 5*/
-            //        LED_Off(HC05_LED_5_PORT_ID, HC05_LED_5_PIN_ID);
-            //        UART_TxString("LED 5 Turned Off Successfully\n");
-            //        HC05_AdminUserChoiceList();
-            //        glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
-            //    }
-            //    else
-            //    {
-            //        /*Admin/User has entered wrong input*/
-            //        UART_TxString("Sorry, Wrong Input\n");
-            //        UART_TxString("1: LED 5 On\n");
-            //        UART_TxString("2: LED 5 Off\n");
-            //    }
-            //}
+            else if(HC05_LED_3_CHOICE == glbl_u8LEDChoice)
+            {
+                if('1' == glbl_u8AdminUserChoice[0])
+                {
+                    /*Admin/User wants to turn on LED 3*/
+                    LED_On(HC05_LED_3_PORT_ID, HC05_LED_3_PIN_ID);
+                    UART_TxString("LED 3 Turned On Successfully\n");
+                    HC05_AdminUserChoiceList();
+                    glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
+                }
+                else if('2' == glbl_u8AdminUserChoice[0])
+                {
+                    /*Admin/User wants to turn off LED 3*/
+                    LED_Off(HC05_LED_3_PORT_ID, HC05_LED_3_PIN_ID);
+                    UART_TxString("LED 3 Turned Off Successfully\n");
+                    HC05_AdminUserChoiceList();
+                    glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
+                }
+                else
+                {
+                    /*Admin/User has entered wrong input*/
+                    UART_TxString("Sorry, Wrong Input\n");
+                    UART_TxString("1: LED 3 On\n");
+                    UART_TxString("2: LED 3 Off\n");
+                }
+            }
+            else if(HC05_LED_4_CHOICE == glbl_u8LEDChoice)
+            {
+                if('1' == glbl_u8AdminUserChoice[0])
+                {
+                    /*Admin/User wants to turn on LED 4*/
+                    LED_On(HC05_LED_4_PORT_ID, HC05_LED_4_PIN_ID);
+                    UART_TxString("LED 4 Turned On Successfully\n");
+                    HC05_AdminUserChoiceList();
+                    glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
+                }
+                else if('2' == glbl_u8AdminUserChoice[0])
+                {
+                    /*Admin/User wants to turn off LED 4*/
+                    LED_Off(HC05_LED_4_PORT_ID, HC05_LED_4_PIN_ID);
+                    UART_TxString("LED 4 Turned Off Successfully\n");
+                    HC05_AdminUserChoiceList();
+                    glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
+                }
+                else
+                {
+                    /*Admin/User has entered wrong input*/
+                    UART_TxString("Sorry, Wrong Input\n");
+                    UART_TxString("1: LED 4 On\n");
+                    UART_TxString("2: LED 4 Off\n");
+                }
+            }
+            else if(HC05_LED_5_CHOICE == glbl_u8LEDChoice)
+            {
+                if('1' == glbl_u8AdminUserChoice[0])
+                {
+                    /*Admin/User wants to turn on LED 5*/
+                    LED_On(HC05_LED_5_PORT_ID, HC05_LED_5_PIN_ID);
+                    UART_TxString("LED 5 Turned On Successfully\n");
+                    HC05_AdminUserChoiceList();
+                    glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
+                }
+                else if('2' == glbl_u8AdminUserChoice[0])
+                {
+                    /*Admin/User wants to turn off LED 5*/
+                    LED_Off(HC05_LED_5_PORT_ID, HC05_LED_5_PIN_ID);
+                    UART_TxString("LED 5 Turned Off Successfully\n");
+                    HC05_AdminUserChoiceList();
+                    glbl_u8CurrentScreen = HC05_SERVICES_SCREEN;
+                }
+                else
+                {
+                    /*Admin/User has entered wrong input*/
+                    UART_TxString("Sorry, Wrong Input\n");
+                    UART_TxString("1: LED 5 On\n");
+                    UART_TxString("2: LED 5 Off\n");
+                }
+            }
             else if(HC05_DIMMING_LED_CHOICE == glbl_u8LEDChoice)
             {
                 if('1' == glbl_u8AdminUserChoice[0])
@@ -964,54 +964,54 @@ void HC05_ShowRunningDevices(void)
     _delay_ms(1000);
     LCD_ClearDisplay();
 
-    //DIO_ReadOutputPinValue(HC05_LED_3_PORT_ID, HC05_LED_3_PIN_ID, &Loc_u8LEDStatus);
-    //if(Loc_u8LEDStatus == DIO_PIN_HIGH)
-    //{
-    //    LCD_WriteString("LED 3: On");
-    //}
-    //else if(Loc_u8LEDStatus == DIO_PIN_LOW)
-    //{
-    //    LCD_WriteString("LED 3: Off");
-    //}
-    //else
-    //{
-    //    /*Do nothing*/
-    //}
-//
-    //LCD_SetCursorPosition(LCD_SECOND_ROW, 0);
-//
-    //DIO_ReadOutputPinValue(HC05_LED_4_PORT_ID, HC05_LED_4_PIN_ID, &Loc_u8LEDStatus);
-    //if(Loc_u8LEDStatus == DIO_PIN_HIGH)
-    //{
-    //    LCD_WriteString("LED 4: On");
-    //}
-    //else if(Loc_u8LEDStatus == DIO_PIN_LOW)
-    //{
-    //    LCD_WriteString("LED 4: Off");
-    //}
-    //else
-    //{
-    //    /*Do nothing*/
-    //}
-//
-    //_delay_ms(1000);
-    //LCD_ClearDisplay();
-    //
-    //DIO_ReadOutputPinValue(HC05_LED_5_PORT_ID, HC05_LED_5_PIN_ID, &Loc_u8LEDStatus);
-    //if(Loc_u8LEDStatus == DIO_PIN_HIGH)
-    //{
-    //    LCD_WriteString("LED 5: On");
-    //}
-    //else if(Loc_u8LEDStatus == DIO_PIN_LOW)
-    //{
-    //    LCD_WriteString("LED 5: Off");
-    //}
-    //else
-    //{
-    //    /*Do nothing*/
-    //}
+    DIO_ReadOutputPinValue(HC05_LED_3_PORT_ID, HC05_LED_3_PIN_ID, &Loc_u8LEDStatus);
+    if(Loc_u8LEDStatus == DIO_PIN_HIGH)
+    {
+        LCD_WriteString("LED 3: On");
+    }
+    else if(Loc_u8LEDStatus == DIO_PIN_LOW)
+    {
+        LCD_WriteString("LED 3: Off");
+    }
+    else
+    {
+        /*Do nothing*/
+    }
 
-    //LCD_SetCursorPosition(LCD_SECOND_ROW, 0);
+    LCD_SetCursorPosition(LCD_SECOND_ROW, 0);
+
+    DIO_ReadOutputPinValue(HC05_LED_4_PORT_ID, HC05_LED_4_PIN_ID, &Loc_u8LEDStatus);
+    if(Loc_u8LEDStatus == DIO_PIN_HIGH)
+    {
+        LCD_WriteString("LED 4: On");
+    }
+    else if(Loc_u8LEDStatus == DIO_PIN_LOW)
+    {
+        LCD_WriteString("LED 4: Off");
+    }
+    else
+    {
+        /*Do nothing*/
+    }
+
+    _delay_ms(1000);
+    LCD_ClearDisplay();
+    
+    DIO_ReadOutputPinValue(HC05_LED_5_PORT_ID, HC05_LED_5_PIN_ID, &Loc_u8LEDStatus);
+    if(Loc_u8LEDStatus == DIO_PIN_HIGH)
+    {
+        LCD_WriteString("LED 5: On");
+    }
+    else if(Loc_u8LEDStatus == DIO_PIN_LOW)
+    {
+       LCD_WriteString("LED 5: Off");
+    }
+    else
+    {
+        /*Do nothing*/
+    }
+
+    LCD_SetCursorPosition(LCD_SECOND_ROW, 0);
 
     switch(glbl_u8DimmingLEDStatus)
     {
