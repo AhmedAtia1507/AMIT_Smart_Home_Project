@@ -37,7 +37,6 @@ int main(void)
 	KPD_Init();
 	
 	TMR_Timer2Init();
-	TMR_Timer2Start();
 	DIO_SetPinDirection(DIO_PORTD, DIO_PIN0, DIO_PIN_INPUT); //Rx
 	DIO_SetPinDirection(DIO_PORTD, DIO_PIN1, DIO_PIN_OUTPUT); //Tx
 	DIO_SetPinDirection(DIO_PORTC, DIO_PIN2, DIO_PIN_OUTPUT);
