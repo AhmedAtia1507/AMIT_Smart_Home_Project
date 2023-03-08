@@ -254,8 +254,8 @@ void USER_Control_Leds(void)
 	DIO_SetPinDirection(DIO_PORTC,DIO_PIN2,DIO_PIN_OUTPUT);
 	DIO_SetPinDirection(DIO_PORTC,DIO_PIN7,DIO_PIN_OUTPUT);
 	DIO_SetPinDirection(DIO_PORTD,DIO_PIN3,DIO_PIN_OUTPUT);
-	//DIO_SetPinDirection(DIO_PORTC,DIO_PIN0,DIO_PIN_OUTPUT);
-	//DIO_SetPinDirection(DIO_PORTC,DIO_PIN1,DIO_PIN_OUTPUT);
+	DIO_SetPinDirection(DIO_PORTC,DIO_PIN0,DIO_PIN_OUTPUT);
+	DIO_SetPinDirection(DIO_PORTC,DIO_PIN1,DIO_PIN_OUTPUT);
 	DIO_SetPinDirection(DIO_PORTD,DIO_PIN7,DIO_PIN_OUTPUT);
 	
 	//give user options to control
@@ -346,27 +346,27 @@ void USER_Control_Leds(void)
 		LCD_ClearDisplay();
 	}
 	
-	//else if (user_input1=='3' && user_input2=='1')
-	//{
-	//	DIO_SetPinValue(DIO_PORTD,DIO_PIN3,DIO_PIN_HIGH);
-	//	LCD_WriteString("TASK DONE");
-	//	_delay_ms(2000);
-	//	LCD_ClearDisplay();
-	//}
-	//	else if (user_input1=='4' && user_input2=='1')
-	//{
-	//	DIO_SetPinValue(DIO_PORTC,DIO_PIN0,DIO_PIN_HIGH);
-	//	LCD_WriteString("TASK DONE");
-	//	_delay_ms(2000);
-	//	LCD_ClearDisplay();
-	//}
-	//else if (user_input1=='5' && user_input2=='1')
-	//{
-	//	DIO_SetPinValue(DIO_PORTC,DIO_PIN1,DIO_PIN_HIGH);
-	//	LCD_WriteString("TASK DONE");
-	//	_delay_ms(2000);
-	//	LCD_ClearDisplay();
-	//}
+	else if (user_input1=='3' && user_input2=='1')
+	{
+		DIO_SetPinValue(DIO_PORTD,DIO_PIN3,DIO_PIN_HIGH);
+		LCD_WriteString("TASK DONE");
+		_delay_ms(2000);
+		LCD_ClearDisplay();
+	}
+		else if (user_input1=='4' && user_input2=='1')
+	{
+		DIO_SetPinValue(DIO_PORTC,DIO_PIN0,DIO_PIN_HIGH);
+		LCD_WriteString("TASK DONE");
+		_delay_ms(2000);
+		LCD_ClearDisplay();
+	}
+	else if (user_input1=='5' && user_input2=='1')
+	{
+		DIO_SetPinValue(DIO_PORTC,DIO_PIN1,DIO_PIN_HIGH);
+		LCD_WriteString("TASK DONE");
+		_delay_ms(2000);
+		LCD_ClearDisplay();
+	}
 	else if (user_input1=='6' && user_input2=='1')
 	{
 		LCD_WriteString("CHOOSE BRIGHT");
@@ -458,29 +458,29 @@ void USER_Control_Leds(void)
 		LCD_ClearDisplay();
 	}
 
-	//else if (user_input1=='3' && user_input2=='2')
-	//{
-	//	DIO_SetPinValue(DIO_PORTD,DIO_PIN3,DIO_PIN_LOW);
-	//LCD_WriteString("TASK DONE");
-	//_delay_ms(2000);
-	//LCD_ClearDisplay();
-	//}
-	//
-	//else if (user_input1=='4' && user_input2=='2')
-	//{
-	//	DIO_SetPinValue(DIO_PORTC,DIO_PIN0,DIO_PIN_LOW);
-	//LCD_WriteString("TASK DONE");
-	//_delay_ms(2000);
-	//LCD_ClearDisplay();
-	//}
-//
-	//else if (user_input1=='5' && user_input2=='2')
-	//{
-	//DIO_SetPinValue(DIO_PORTC,DIO_PIN1,DIO_PIN_LOW);
-	//LCD_WriteString("TASK DONE");
-	//_delay_ms(2000);
-	//LCD_ClearDisplay();
-	//}
+	else if (user_input1=='3' && user_input2=='2')
+	{
+		DIO_SetPinValue(DIO_PORTD,DIO_PIN3,DIO_PIN_LOW);
+	LCD_WriteString("TASK DONE");
+	_delay_ms(2000);
+	LCD_ClearDisplay();
+	}
+	
+	else if (user_input1=='4' && user_input2=='2')
+	{
+		DIO_SetPinValue(DIO_PORTC,DIO_PIN0,DIO_PIN_LOW);
+	LCD_WriteString("TASK DONE");
+	_delay_ms(2000);
+	LCD_ClearDisplay();
+	}
+
+	else if (user_input1=='5' && user_input2=='2')
+	{
+	DIO_SetPinValue(DIO_PORTC,DIO_PIN1,DIO_PIN_LOW);
+	LCD_WriteString("TASK DONE");
+	_delay_ms(2000);
+	LCD_ClearDisplay();
+	}
 
 	else if (user_input1=='6' && user_input2=='2')
 	{
