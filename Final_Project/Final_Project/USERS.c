@@ -328,7 +328,7 @@ void USER_Control_Leds(void)
 
 		LCD_WriteString("1.20%    2.40%");
 		LCD_SetCursorPosition(LCD_SECOND_ROW,0);
-		LCD_WriteString("3.60%    2.80%");
+		LCD_WriteString("3.60%    4.80%");
 
 		_delay_ms(1000);
 		LCD_ClearDisplay();
@@ -348,7 +348,7 @@ void USER_Control_Leds(void)
 				break;
 			}
 		}
-
+		LCD_ClearDisplay();
 		switch(user_input3)
 		{
 			case '1':
