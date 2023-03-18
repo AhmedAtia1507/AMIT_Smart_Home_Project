@@ -61,7 +61,7 @@ u8 USER_LOGIN(void)
 {
 	u8 ID = KPD_NOT_PRESSED;
 	u8 PASS_Arr[3];
-
+	user_exist = 1;
 	
 	//GET USER ID
 	LCD_WriteString("ENTER USER ID:");
@@ -121,22 +121,27 @@ u8 USER_LOGIN(void)
 				_delay_ms(1000);
 				LCD_ClearDisplay();
 				buzzer_check++;
-				
-				return user_exist;
 				break;
 			}
 			address++;
 		}
-		user_exist = 1;
-		LCD_WriteString("LOGIN SUCCESS");
-		_delay_ms(1000);
-		LCD_ClearDisplay();
-		if (buzzer_check == 3 )
+		if(user_exist == 1)
 		{
-			buzzer_check = 0 ;
-			BUZZER_On();
-			_delay_ms(3000);
-			BUZZER_Off();
+			LCD_WriteString("LOGIN SUCCESS");
+			_delay_ms(1000);
+			LCD_ClearDisplay();
+			buzzer_check = 0;
+		}
+		else if(user_exist == 0)
+		{
+			if (buzzer_check == 3)
+			{
+				buzzer_check = 0;
+				BUZZER_On();
+				_delay_ms(3000);
+				BUZZER_Off();
+				HC05_SystemReset();
+			}
 		}
 		return user_exist;
 	}
@@ -153,6 +158,7 @@ u8 USER_LOGIN(void)
 			BUZZER_On();
 			_delay_ms(3000);
 			BUZZER_Off();
+			HC05_SystemReset();
 		}
 		return user_exist;
 	}
