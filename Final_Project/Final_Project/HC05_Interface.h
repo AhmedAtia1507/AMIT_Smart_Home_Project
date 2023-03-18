@@ -19,48 +19,7 @@
 #define USER_MODE_ON                            1
 #define USER_MODE_OFF                           0
 #define USER_LOGGED_ON                          7
-/**********Interface Screens************/
-#define HC05_WELCOME_SCREEN                     1
-#define HC05_LOGIN_USERNAME_SCREEN              2
-#define HC05_LOGIN_PASSWORD_SCREEN              3
-#define HC05_SERVICES_SCREEN                    4
-#define HC05_LEDS_CHOICE                        5
-#define HC05_LEDS_CONTROL                       6
-#define HC05_DOOR_CONTROL                       8
-#define HC05_ADD_USER_USERNAME_SCREEN           9
-#define HC05_ADD_USER_PASSWORD_SCREEN           10
-#define HC05_DELETE_USER_SCREEN                 11
-#define HC05_LOG_OUT_SCREEN                     12
-#define HC05_LCD_KPD_SYS_REQUEST_SCREEN         13
 
-
-
-#define HC05_USERNAME_PASSOWRD_CORRECT          1
-#define HC05_USERNAME_PASSOWRD_INCORRECT        2
-
-#define HC05_USER_EXIST                         1
-#define HC05_USER_NOT_EXIST                     2
-
-
-#define DOOR_CLOSED                             0
-#define DOOR_OPENED                             1
-
-#define HC05_LED_1_CHOICE                       1
-#define HC05_LED_2_CHOICE                       2
-#define HC05_LED_3_CHOICE                       3
-#define HC05_LED_4_CHOICE                       4
-#define HC05_LED_5_CHOICE                       5
-#define HC05_DIMMING_LED_CHOICE                 6
-
-
-#define HC05_DIMMING_LED_0                      0
-#define HC05_DIMMING_LED_20                     1
-#define HC05_DIMMING_LED_40                     2
-#define HC05_DIMMING_LED_60                     3
-#define HC05_DIMMING_LED_80                     4
-#define HC05_DIMMING_LED_100                    5
-
-#define HC05_NEW_LINE_CHAR                      13
 /**
  * @brief: Function to send a welcome message to the user/admin
  * 
@@ -103,5 +62,14 @@ void HC05_ShowRunningDevices(void);
  * @return u8: Approval or Refuse 
  */
 u8 HC05_AdminApproval(void);
+/**
+ * @brief: Function to change the screen to admin response screen so that admin can choose to approve or disapprove
+ * 
+ */
 void HC05_ScreenChangeToAdminResponse(void);
+/**
+ * @brief: Function to reset the system after 3 wrong login attempts
+ * 
+ */
+void HC05_SystemReset(void);
 #endif /*HC05_INTERFACE_H_*/
