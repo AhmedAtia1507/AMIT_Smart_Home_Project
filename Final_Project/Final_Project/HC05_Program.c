@@ -24,6 +24,7 @@
 
 #include "HC05_Interface.h"
 #include "HC05_Config.h"
+#include "HC05_Private.h"
 
 #define F_CPU 16000000
 #include <util/delay.h>
@@ -364,7 +365,7 @@ void HC05_AdminUserInterface(void)
                 /*Means that the user has chosen to enter as an admin*/
 				glbl_u8AdminMode = ADMIN_MODE_ON;
 				UART_TxString("Hello Admin");
-				UART_TxString("Please enter your username: ");
+				UART_TxString("Please enter your username:");
 
                 /*We here switch the state to be login username screen*/
 				glbl_u8CurrentScreen = HC05_LOGIN_USERNAME_SCREEN;
@@ -374,7 +375,7 @@ void HC05_AdminUserInterface(void)
                 /*Means that the user has chosen to enter as an admin*/
 				glbl_u8UserMode = USER_MODE_ON;
 				UART_TxString("Hello User");
-				UART_TxString("Please enter your username: ");
+				UART_TxString("Please enter your username:");
 
                 /*We here switch the state to be login username screen*/
 				glbl_u8CurrentScreen = HC05_LOGIN_USERNAME_SCREEN;
@@ -394,7 +395,7 @@ void HC05_AdminUserInterface(void)
             UART_RxCharAsynchronous(&glbl_u8AdminUserUsername);
             UART_TxChar(glbl_u8AdminUserUsername);
             UART_TxChar(HC05_NEW_LINE_CHAR);
-			UART_TxString("Please enter your password");
+			UART_TxString("Please enter your password:");
 
             /*Then, we switch the state to be the login password screen*/
             glbl_u8CurrentScreen = HC05_LOGIN_PASSWORD_SCREEN;
@@ -443,7 +444,7 @@ void HC05_AdminUserInterface(void)
                     glbl_u8UserPasswordWrongCount++;
 			    	if (glbl_u8UserPasswordWrongCount != 3)
 			    	{
-			    		UART_TxString("Please enter your username");
+			    		UART_TxString("Please enter your username:");
 			    	}
                     glbl_u8CurrentScreen = HC05_LOGIN_USERNAME_SCREEN;
 			    }
@@ -456,10 +457,7 @@ void HC05_AdminUserInterface(void)
 			    	BUZZER_Off();
 
                     /*Reset System ---------------------------------->*/
-			    	HC05_WelcomeMessage();
-                    glbl_u8AdminMode = ADMIN_MODE_OFF;
-                    glbl_u8UserMode = USER_MODE_OFF;
-			    	glbl_u8UserPasswordWrongCount = 0;
+			    	HC05_SystemReset();
 			    }
             }
             else
@@ -507,7 +505,7 @@ void HC05_AdminUserInterface(void)
                 if(glbl_u8AdminMode == ADMIN_LOGGED_ON)
                 {
                     /*Admin wants to add a new user "Allowed"*/
-					UART_TxString("Please Enter the new user's ID(max.9)");
+					UART_TxString("Please Enter the new user's ID(max.9):");
                     glbl_u8CurrentScreen = HC05_ADD_USER_USERNAME_SCREEN;
                 }
                 else if(glbl_u8UserMode == USER_LOGGED_ON)
@@ -527,7 +525,7 @@ void HC05_AdminUserInterface(void)
                 if(glbl_u8AdminMode == ADMIN_LOGGED_ON)
                 {
                     /*Admin wants to delete a user "Allowed"*/
-					UART_TxString("Please enter the user's ID that you wish to delete");
+					UART_TxString("Please enter the user's ID that you wish to delete:");
                     glbl_u8CurrentScreen = HC05_DELETE_USER_SCREEN;
                 }
                 else if(glbl_u8UserMode == USER_LOGGED_ON)
@@ -1012,3 +1010,28 @@ void HC05_ScreenChangeToAdminResponse(void)
 }
 
 /********************************************************************************************************************/
+
+/**
+ * @brief: Function to reset the system after 3 wrong login attempts
+ * 
+ */
+void HC05_SystemReset(void)
+{
+    /*We start by turning off LEDs*/
+    LED_Off(HC05_LED_1_PORT_ID, HC05_LED_1_PIN_ID);
+    LED_Off(HC05_LED_2_PORT_ID, HC05_LED_2_PIN_ID);
+    TMR_Timer2Stop();
+    TMR_Timer2Set_PWM_DutyCycle(0);
+    TMR_Timer2Start();
+
+    /*Then, we close the door*/
+    SRVM_SetRotationAngle(SRVM_ANGLE_NEGATIVE, 90);
+    
+    glbl_u8AdminMode = ADMIN_MODE_OFF;
+    glbl_u8UserMode = USER_MODE_OFF;
+	glbl_u8UserPasswordWrongCount = 0;
+    glbl_u8DoorStatus = DOOR_CLOSED;
+    glbl_u8DimmingLEDStatus = HC05_DIMMING_LED_0;
+
+    HC05_WelcomeMessage();
+}
