@@ -25,15 +25,6 @@ static u8 HC05_ADMIN_PASSWRD[3] =           {'1','2','3'};
 #define HC05_LED_2_PORT_ID                  DIO_PORTC
 #define HC05_LED_2_PIN_ID                   DIO_PIN7
 
-#define HC05_LED_3_PORT_ID                  DIO_PORTD
-#define HC05_LED_3_PIN_ID                   DIO_PIN3
-
-#define HC05_LED_4_PORT_ID                  DIO_PORTC
-#define HC05_LED_4_PIN_ID                   DIO_PIN0
-
-#define HC05_LED_5_PORT_ID                  DIO_PORTC
-#define HC05_LED_5_PIN_ID                   DIO_PIN1
-
 #define HC05_DIMMING_LED_PORT_ID            DIO_PORTD
 #define HC05_DIMMING_LED_PIN_ID             DIO_PIN7
 #endif /*HC05_CONFIG_H_*/
